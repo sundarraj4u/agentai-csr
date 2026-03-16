@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ai-agent-service
+  cloud:
+    azure:
+      keyvault:
+        secret:
+          property-sources[0]:
+            endpoint: ${AZURE_KEYVAULT_ENDPOINT:https://my-keyvault.vault.azure.net/}
+            credential:
+              managed-identity-enabled: true
+
+# The OpenAI key is injected securely from Key Vault. 
+# Assume secret name in KeyVault is "openai-api-key"
+langchain4j:
+  open-ai:
+    chat-model:
+      api-key: ${openai-api-key:demo-fallback-key}
+      model-name: ${OPENAI_MODEL:gpt-4-turbo}
+      temperature: 0.2 # Low temperature for more deterministic outputs
+      max-retries: 3   # SDK level retries for API rate limiting
+
+# Application Insights
+applicationinsights:
+  connection-string: ${APPLICATIONINSIGHTS_CONNECTION_STRING:}
