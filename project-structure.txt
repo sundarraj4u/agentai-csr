@@ -1,0 +1,25 @@
+ai-agent-service/
+├── .gitignore
+├── README.md
+├── pom.xml
+└── src/
+    └── main/
+        ├── resources/
+        │   └── application.yml
+        └── java/
+            └── com/
+                └── example/
+                    └── agent/
+                        ├── AgentApplication.java
+                        ├── config/
+                        │   └── AiConfig.java
+                        ├── agent/
+                        │   └── SupportAgent.java
+                        ├── service/
+                        │   └── ChatOrchestrator.java
+                        ├── tools/
+                        │   └── CustomerTools.java
+                        ├── controller/
+                        │   └── AgentController.java
+                        └── monitoring/
+                            └── AiTelemetryListener.java
